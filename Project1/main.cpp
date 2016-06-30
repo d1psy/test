@@ -7,7 +7,6 @@ using namespace tinyxml2;
 using namespace std;
 
 struct GeometryData
-<<<<<<< HEAD
 {
 	int ToothIndex;
 	string System;
@@ -38,23 +37,6 @@ GeometryData parseXML(const char fileName[])
 {
 	
 	GeometryData d;
-=======
-{
-		double PositionX;
-		double PositionY;
-		// ...
-		double DirectionX
-		double RotationX;
-		// ...
-};
-
-GeometryData parseXML(const char fileName[])
-{
-	GeometryData d;
-	d.PositionX = 42;  // parse actual values from XML file and assign to struct fields
-	// ...
-/*	double arr[4][4];
->>>>>>> origin/master
 	tinyxml2::XMLDocument xml_doc;
 	tinyxml2::XMLError eResult = xml_doc.LoadFile(fileName);
 	if (eResult != tinyxml2::XML_SUCCESS) return d;
@@ -67,7 +49,7 @@ GeometryData parseXML(const char fileName[])
 	if (Kit == nullptr) return d;
 	tinyxml2::XMLElement* SYSTEM = Kit->FirstChildElement("System");
 	if (SYSTEM == nullptr) return d;
-	cout << SYSTEM->GetText();
+	//cout << SYSTEM->GetText();
 	/*d.System = std::stod(SYSTEM->Attribute("value")); 
 	system("pause");
 	tinyxml2::XMLElement* NAME = Kit->FirstChildElement("Name");
@@ -76,23 +58,12 @@ GeometryData parseXML(const char fileName[])
 	tinyxml2::XMLElement* id = Kit->FirstChildElement("ID");
 	if (id == nullptr) return d;
 	d.ID = std::stod(id->Attribute("value"));
-	cout << d.ID << " " << d.Name << " " << d.System << " " << d.ToothIndex << endl;
+	cout << d.ID << " " << d.Name << " " << d.System << " " << d.ToothIndex << endl*/;
 	tinyxml2::XMLElement* Position = TI->FirstChildElement("Position");
-<<<<<<< HEAD
 	if (Position == nullptr) return d;
 	d.PositionX = std::stod(Position->Attribute("x"));
 	d.PositionY = std::stod(Position->Attribute("y"));
 	d.PositionZ = std::stod(Position->Attribute("z"));
-=======
-	if (Position == nullptr) return false;
-
-		pos.x = std::stod(Position->Attribute("x"));
-		pos.y = std::stod(Position->Attribute("y"));
-		pos.z = std::stod(Position->Attribute("z"));
-
-
-
->>>>>>> origin/master
 	tinyxml2::XMLElement* Direction = TI->FirstChildElement("Direction");
 	if (Direction == nullptr) return d;
 	d.DirectionX = std::stod(Direction->Attribute("x"));
@@ -140,63 +111,20 @@ GeometryData parseXML(const char fileName[])
 	d.zAxisX = std::stod(Zaxis->Attribute("x"));
 	d.zAxisY = std::stod(Zaxis->Attribute("y"));
 	d.zAxisZ = std::stod(Zaxis->Attribute("z"));
-	return d;*/
-}
-
-
-
-
-
-<<<<<<< HEAD
-=======
-	zA.x = std::stod(Zaxis->Attribute("x"));
-	zA.y = std::stod(Zaxis->Attribute("y"));
-	zA.z = std::stod(Zaxis->Attribute("z"));
-*/
 	return d;
 }
 
-// struct position {
-// 	double x, y, z;
-// }pos;
-//
-// struct direction {
-// 	double x, y, z;
-// }dir;
-//
-// struct rotation {
-// 	double x, y, z;
-// }rot;
-//
-// struct xAxis {
-// 	double x, y, z;
-// }xA;
-//
-// struct yAxis {
-// 	double x, y, z;
-// }yA;
-//
-// struct zAxis {
-// 	double x, y, z;
-// }zA;
 
 
 
->>>>>>> origin/master
+
 int main()
 {
 	GeometryData d0 = parseXML("01000_20160314_1152_Inselsberger_ImplantDirectionPosition_0.xml");
 	GeometryData d1 = parseXML("01000_20160314_1152_Inselsberger_ImplantDirectionPosition_1.xml");
 	GeometryData d2 = parseXML("01000_20160314_1152_Inselsberger_ImplantDirectionPosition_2.xml");
 	GeometryData d3 = parseXML("01000_20160314_1152_Inselsberger_ImplantDirectionPosition_3.xml");
-<<<<<<< HEAD
 
 
 	return 0;
 }
-=======
-
-
-	return 0;
-}
->>>>>>> origin/master
