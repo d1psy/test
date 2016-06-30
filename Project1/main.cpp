@@ -6,36 +6,22 @@
 using namespace tinyxml2;
 using namespace std;
 
-struct position {
-	double x, y, z;
-}pos;
-
-struct direction {
-	double x, y, z;
-}dir;
-
-struct rotation {
-	double x, y, z;
-}rot;
-
-struct xAxis {
-	double x, y, z;
-}xA;
-
-struct yAxis {
-	double x, y, z;
-}yA;
-
-struct zAxis {
-	double x, y, z;
-}zA;
-
-
-
-int main()
+struct GeometryData
 {
-	
-	double arr[4][4];
+		double PositionX;
+		double PositionY;
+		// ...
+		double DirectionX
+		double RotationX;
+		// ...
+};
+
+GeometryData parseXML(const char fileName[])
+{
+	GeometryData d;
+	d.PositionX = 42;  // parse actual values from XML file and assign to struct fields
+	// ...
+/*	double arr[4][4];
 	tinyxml2::XMLDocument xml_doc;
 
 	tinyxml2::XMLError eResult = xml_doc.LoadFile("test.xml");
@@ -53,7 +39,7 @@ int main()
 		pos.x = std::stod(Position->Attribute("x"));
 		pos.y = std::stod(Position->Attribute("y"));
 		pos.z = std::stod(Position->Attribute("z"));
-	
+
 
 
 	tinyxml2::XMLElement* Direction = TI->FirstChildElement("Direction");
@@ -115,6 +101,43 @@ int main()
 	zA.x = std::stod(Zaxis->Attribute("x"));
 	zA.y = std::stod(Zaxis->Attribute("y"));
 	zA.z = std::stod(Zaxis->Attribute("z"));
+*/
+	return d;
+}
 
-	system("pause");
+// struct position {
+// 	double x, y, z;
+// }pos;
+//
+// struct direction {
+// 	double x, y, z;
+// }dir;
+//
+// struct rotation {
+// 	double x, y, z;
+// }rot;
+//
+// struct xAxis {
+// 	double x, y, z;
+// }xA;
+//
+// struct yAxis {
+// 	double x, y, z;
+// }yA;
+//
+// struct zAxis {
+// 	double x, y, z;
+// }zA;
+
+
+
+int main()
+{
+	GeometryData d0 = parseXML("01000_20160314_1152_Inselsberger_ImplantDirectionPosition_0.xml");
+	GeometryData d1 = parseXML("01000_20160314_1152_Inselsberger_ImplantDirectionPosition_1.xml");
+	GeometryData d2 = parseXML("01000_20160314_1152_Inselsberger_ImplantDirectionPosition_2.xml");
+	GeometryData d3 = parseXML("01000_20160314_1152_Inselsberger_ImplantDirectionPosition_3.xml");
+
+
+	return 0;
 }
