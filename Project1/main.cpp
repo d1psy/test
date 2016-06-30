@@ -6,6 +6,8 @@
 using namespace tinyxml2;
 using namespace std;
 
+
+
 struct GeometryData
 {
 	int ToothIndex;
@@ -38,45 +40,80 @@ GeometryData parseXML(const char fileName[])
 
 	GeometryData d;
 	tinyxml2::XMLDocument xml_doc;
+
+
 	tinyxml2::XMLError eResult = xml_doc.LoadFile(fileName);
-	if (eResult != tinyxml2::XML_SUCCESS) return d;
+	if (eResult != tinyxml2::XML_SUCCESS) 
+		return d;
+
+
 	tinyxml2::XMLNode* root = xml_doc.FirstChildElement("root");
-	if (root == nullptr) return d;
+	if (root == nullptr) 
+		return d;
+
+
 	tinyxml2::XMLElement* TI = root->FirstChildElement("ToothIndex");
-	if (TI == nullptr) return d;
+	if (TI == nullptr) 
+		return d;
 	d.ToothIndex = std::stod(TI->Attribute("unn"));
+
+
 	tinyxml2::XMLElement* Kit = TI->FirstChildElement("Kit");
-	if (Kit == nullptr) return d;
+	if (Kit == nullptr) 
+		return d;
+
+
 	tinyxml2::XMLElement* SYSTEM = Kit->FirstChildElement("System");
-	if (SYSTEM == nullptr) return d;
+	if (SYSTEM == nullptr) 
+		return d;
 	d.System = (SYSTEM->Attribute("value"));
+
+
 	tinyxml2::XMLElement* NAME = Kit->FirstChildElement("Name");
-	if (NAME == nullptr)  return d;
+	if (NAME == nullptr)  
+		return d;
 	d.Name = (NAME->Attribute("value"));
+
+
 	tinyxml2::XMLElement* id = Kit->FirstChildElement("ID");
-	if (id == nullptr) return d;
+	if (id == nullptr) 
+		return d;
 	d.ID = (id->Attribute("value"));
+
+
 	tinyxml2::XMLElement* Position = TI->FirstChildElement("Position");
-	if (Position == nullptr) return d;
+	if (Position == nullptr) 
+		return d;
 	d.PositionX = std::stod(Position->Attribute("x"));
 	d.PositionY = std::stod(Position->Attribute("y"));
 	d.PositionZ = std::stod(Position->Attribute("z"));
+
+
 	tinyxml2::XMLElement* Direction = TI->FirstChildElement("Direction");
-	if (Direction == nullptr) return d;
+	if (Direction == nullptr) 
+		return d;
 	d.DirectionX = std::stod(Direction->Attribute("x"));
 	d.DirectionY = std::stod(Direction->Attribute("y"));
 	d.DirectionZ = std::stod(Direction->Attribute("z"));
+
+
 	tinyxml2::XMLElement* Rotation = TI->FirstChildElement("Rotation");
-	if (Rotation == nullptr) return d;
+	if (Rotation == nullptr) 
+		return d;
 	d.RotationX = std::stod(Rotation->Attribute("x"));
 	Rotation = Rotation->NextSiblingElement("Rotation");
-	if (Rotation == nullptr) return d;
+	if (Rotation == nullptr) 
+		return d;
 	d.RotationY = std::stod(Rotation->Attribute("y"));
 	Rotation = Rotation->NextSiblingElement("Rotation");
-	if (Rotation == nullptr) return d;
+	if (Rotation == nullptr) 
+		return d;
 	d.RotationZ = std::stod(Rotation->Attribute("z"));
+
+
 	tinyxml2::XMLElement* TransformMatrix = TI->FirstChildElement("TransformMatrix");
-	if (TransformMatrix == nullptr) return d;
+	if (TransformMatrix == nullptr) 
+		return d;
 	d.TransformMatrix[0][0] = std::stod(TransformMatrix->Attribute("m00"));
 	d.TransformMatrix[0][1] = std::stod(TransformMatrix->Attribute("m01"));
 	d.TransformMatrix[0][2] = std::stod(TransformMatrix->Attribute("m02"));
@@ -93,21 +130,32 @@ GeometryData parseXML(const char fileName[])
 	d.TransformMatrix[3][1] = std::stod(TransformMatrix->Attribute("m31"));
 	d.TransformMatrix[3][2] = std::stod(TransformMatrix->Attribute("m32"));
 	d.TransformMatrix[3][3] = std::stod(TransformMatrix->Attribute("m33"));
+
+
 	tinyxml2::XMLElement* Xaxis = TI->FirstChildElement("Xaxis");
-	if (Xaxis == nullptr) return d;
+	if (Xaxis == nullptr) 
+		return d;
 	d.xAxisX = std::stod(Xaxis->Attribute("x"));
 	d.xAxisY = std::stod(Xaxis->Attribute("y"));
 	d.xAxisZ = std::stod(Xaxis->Attribute("z"));
+
+
 	tinyxml2::XMLElement* Yaxis = TI->FirstChildElement("Yaxis");
-	if (Yaxis == nullptr) return d;
+	if (Yaxis == nullptr) 
+		return d;
 	d.yAxisX = std::stod(Yaxis->Attribute("x"));
 	d.yAxisY = std::stod(Yaxis->Attribute("y"));
 	d.yAxisZ = std::stod(Yaxis->Attribute("z"));
+
+
 	tinyxml2::XMLElement* Zaxis = TI->FirstChildElement("Zaxis");
-	if (Zaxis == nullptr) return d;
+	if (Zaxis == nullptr) 
+		return d;
 	d.zAxisX = std::stod(Zaxis->Attribute("x"));
 	d.zAxisY = std::stod(Zaxis->Attribute("y"));
 	d.zAxisZ = std::stod(Zaxis->Attribute("z"));
+
+
 	return d;
 }
 
