@@ -35,6 +35,13 @@ struct GeometryData
 	double zAxisZ;
 };
 
+ostream& operator<<(ostream& out, const GeometryData& d)
+{
+	out << "Name: " << d.Name << "\n";
+	out << "Position: " << "(" << d.PositionX << "," << d.PositionY << "," << d.PositionZ << ")\n";
+	return out;
+}
+
 GeometryData parseXML(const char fileName[])
 {
 
@@ -170,6 +177,6 @@ int main()
 	GeometryData d2 = parseXML("01000_20160314_1152_Inselsberger_ImplantDirectionPosition_2.xml");
 	GeometryData d3 = parseXML("01000_20160314_1152_Inselsberger_ImplantDirectionPosition_3.xml");
 
-
+	cout << d0;
 	return 0;
 }
