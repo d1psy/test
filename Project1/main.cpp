@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include "tinyxml2.h"
 #include <iostream>
 #include <string>
@@ -9,7 +9,7 @@ using namespace std;
 struct GeometryData
 {
 	int ToothIndex;
-	string System;
+	const char* System;
 	string Name;
 	string ID;
 	double PositionX;
@@ -35,7 +35,7 @@ struct GeometryData
 
 GeometryData parseXML(const char fileName[])
 {
-	
+
 	GeometryData d;
 	tinyxml2::XMLDocument xml_doc;
 	tinyxml2::XMLError eResult = xml_doc.LoadFile(fileName);
@@ -49,16 +49,13 @@ GeometryData parseXML(const char fileName[])
 	if (Kit == nullptr) return d;
 	tinyxml2::XMLElement* SYSTEM = Kit->FirstChildElement("System");
 	if (SYSTEM == nullptr) return d;
-	//cout << SYSTEM->GetText();
-	/*d.System = std::stod(SYSTEM->Attribute("value")); 
-	system("pause");
+	d.System = (SYSTEM->Attribute("value"));
 	tinyxml2::XMLElement* NAME = Kit->FirstChildElement("Name");
 	if (NAME == nullptr)  return d;
-	d.Name = std::stod(NAME->Attribute("value"));
+	d.Name = (NAME->Attribute("value"));
 	tinyxml2::XMLElement* id = Kit->FirstChildElement("ID");
 	if (id == nullptr) return d;
-	d.ID = std::stod(id->Attribute("value"));
-	cout << d.ID << " " << d.Name << " " << d.System << " " << d.ToothIndex << endl*/;
+	d.ID = (id->Attribute("value"));
 	tinyxml2::XMLElement* Position = TI->FirstChildElement("Position");
 	if (Position == nullptr) return d;
 	d.PositionX = std::stod(Position->Attribute("x"));
